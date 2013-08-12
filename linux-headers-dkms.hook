@@ -1,0 +1,7 @@
+[Hook]
+Description = Trigger DKMS Installation After Kernel Headers Installed
+Type = PostInstall
+
+[Target]
+File = /usr/src/linux-*
+Exec = dkms autoinstall -k $(basename %f|sed "s/linux-\(.*\)/\1/")
